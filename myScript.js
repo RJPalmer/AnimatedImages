@@ -1,33 +1,56 @@
 $(document).ready(function () {
+	
+	//canvas variables
 	var c = document.getElementById("theCanvas");
 	var cxt = c.getContext("2d");
-	var show_work = 0;
-	var first_image = 1;
 	
-	var timer_is_on = 0;
-	var isStopped = 1;
-	var image1 = new Image();
-	image1.src = "./smiley1.bmp";
-	var image2 = new Image();
-	image2.src = "./smiley2.bmp";
-	image1.onload = function(){
+	
+	//timer variables
+	var timer_is_on;
+	var isStopped;
+	
+	//image sources and variabels
+	var image1;
+	var image2;
+	var first_image;
+	
+	//image to draw
+	var displayImage;
+	
+	doTimer();
+	
+	function init(){
+		timer_is_on = 0;
+		isStopped = 0;
+		first_image = 1;
 		
+		image1 = "./smiley1.bmp";
+		image2 = "./smiley2.bmp";
+		
+		displayImage = new Image();
+		
+	}
+	
+	function runProgram(){
+		swapImage();
+		displayImage.onload = function(){
 		drawCanvas();
 	};
+	}
 	
-	$("button").click(function() {
+	function swapImage(){
 		if(first_image){
-			image1.src = image2.src;
+			displayImage.src = image1;
 			first_image = 0;
 		}
 		else{
-			image1.src = "./smiley1.bmp";
+			displayImage.src = image2;
 			first_image = 1;
 		}
-	});
+	}
 	
 	//set focus to the canvas
-	 //document.getElementById("theCanvas").focus();
+	document.getElementById("theCanvas").focus();
 	
 	/*
 	//Get key input
@@ -56,19 +79,21 @@ $(document).ready(function () {
 
 
 	function drawCanvas(){
-		cxt.drawImage(image1, 10, 10);
+		cxt.drawImage(displayImage, 10, 10);
 		
 	}
 	
 	//swaps the square color every second
 	function animate(){
-		 t=setTimeout(function(){animate();}, 500);
+		runProgram();
+		 t=setTimeout(function(){animate();}, 900);
 		
 	}
 
 	//call the function to start the timer
 	function doTimer()
 	{
+	init();
 	if (!timer_is_on)
 	  {
 	  	timer_is_on=1;
