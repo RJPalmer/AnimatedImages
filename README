@@ -1,0 +1,17 @@
+November 14, 2011
+Author: Robert Palmer
+
+Created AnimatedImages - A simple web page that switches images with a click of a button using HTML5 canvas and javascript/jQuery.
+
+11/14/2011
+What's Next - Using a timer, a method will called after an interval of time to switch the images. 
+Requirement:
+  Timing
+	Images
+	Image swapping
+
+Hypothesis:
+	Given two images, image1 and image2. We created a displayImage to show on the canvas. The timer will call a swapMethod every so often to switch the source location of the displayImage from image1 to image2 and vice versa.
+References:
+	MovingSquares Project.
+	W3Schools.com 
