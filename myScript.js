@@ -12,7 +12,14 @@ $(document).ready(function () {
 	//image sources and variabels
 	var image1;
 	var image2;
+	var image3;
+	var image4;
+	var image5;
 	var first_image;
+	var second_image;
+	var third_image;
+	var fourth_image;
+	var fifth_image;
 	
 	//image to draw
 	var displayImage;
@@ -23,10 +30,16 @@ $(document).ready(function () {
 		timer_is_on = 0;
 		isStopped = 0;
 		first_image = 1;
+		second_image = 0;
+		third_image =0;
+		fourth_image = 0;
+		fifth_image = 0;
 		
-		image1 = "./smiley1.bmp";
-		image2 = "./smiley2.bmp";
-		
+		image1 = "./walking3.bmp";
+		image2 = "./walking4.bmp";
+		image3 = "./walking5.PNG";
+		image4 = "./walking6.PNG";
+		image5 = "./walking7.PNG";
 		displayImage = new Image();
 		
 	}
@@ -42,9 +55,22 @@ $(document).ready(function () {
 		if(first_image){
 			displayImage.src = image1;
 			first_image = 0;
-		}
-		else{
+			second_image = 1;
+		}else if(second_image){
 			displayImage.src = image2;
+			second_image = 0;
+			third_image = 1;
+		}else if(third_image){
+			displayImage.src = image3;
+			third_image = 0;
+			fourth_image = 1;
+		}else if(fourth_image){
+			displayImage.src = image4;
+			fourth_image = 0;
+			fifth_image = 1;
+		}else{
+			displayImage.src = image5;
+			fifth_image = 0;
 			first_image = 1;
 		}
 	}
@@ -52,30 +78,7 @@ $(document).ready(function () {
 	//set focus to the canvas
 	document.getElementById("theCanvas").focus();
 	
-	/*
-	//Get key input
-	$("#theCanvas").keydown(function (event){
-				//get the current position
-				var newX = square1.getXPosition();
-				var  newY = square1.getYPosition();
-				
-				//if the 'a' key has been pressed, move right 5 
-				if (event.which == 39) {
-					square1.setPosition(newX + 5, newY);
-				}
-				else if(event.which == 37){
-					square1.setPosition(newX - 5, newY );
-				}
-				else if(event.which == 40){
-					square1.setPosition(newX , newY+ 5);
-				}
-				else if(event.which == 38){
-					square1.setPosition(newX, newY- 5 );
-				}
-				drawCanvas();
-	});
-		
-	*/
+
 
 
 	function drawCanvas(){
@@ -86,7 +89,7 @@ $(document).ready(function () {
 	//swaps the square color every second
 	function animate(){
 		runProgram();
-		 t=setTimeout(function(){animate();}, 900);
+		 t=setTimeout(function(){animate();}, 90);
 		
 	}
 
