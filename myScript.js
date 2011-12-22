@@ -10,16 +10,9 @@ $(document).ready(function () {
 	var isStopped;
 	
 	//image sources and variabels
-	var image1;
-	var image2;
-	var image3;
-	var image4;
-	var image5;
-	var first_image;
-	var second_image;
-	var third_image;
-	var fourth_image;
-	var fifth_image;
+	var images = new Array("./walking3.png", "./walking4.PNG", image3 = "./walking5.PNG",
+		"./walking6.PNG", "./walking7.PNG");
+	var index;
 	
 	//image to draw
 	var displayImage;
@@ -29,17 +22,9 @@ $(document).ready(function () {
 	function init(){
 		timer_is_on = 0;
 		isStopped = 0;
-		first_image = 1;
-		second_image = 0;
-		third_image =0;
-		fourth_image = 0;
-		fifth_image = 0;
+		index = 0;
 		
-		image1 = "./walking3.bmp";
-		image2 = "./walking4.bmp";
-		image3 = "./walking5.PNG";
-		image4 = "./walking6.PNG";
-		image5 = "./walking7.PNG";
+		
 		displayImage = new Image();
 		
 	}
@@ -52,27 +37,10 @@ $(document).ready(function () {
 	}
 	
 	function swapImage(){
-		if(first_image){
-			displayImage.src = image1;
-			first_image = 0;
-			second_image = 1;
-		}else if(second_image){
-			displayImage.src = image2;
-			second_image = 0;
-			third_image = 1;
-		}else if(third_image){
-			displayImage.src = image3;
-			third_image = 0;
-			fourth_image = 1;
-		}else if(fourth_image){
-			displayImage.src = image4;
-			fourth_image = 0;
-			fifth_image = 1;
-		}else{
-			displayImage.src = image5;
-			fifth_image = 0;
-			first_image = 1;
-		}
+		displayImage.src = images[index];
+		index++;
+		if(index > 4)
+			index = 0;
 	}
 	
 	//set focus to the canvas
